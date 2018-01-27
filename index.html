@@ -23,11 +23,10 @@
 
 
 <body>
+  <script type="text/javascript" src="greenspace_boundary.js"></script>
 <script>
   var map = L.map('map', {
-    <!--center: [56.475, -2.94],-->
-    <!--should be lat, long 56, -2-->
-    center: [ -2.730023464199331, 56.215190305614193 ],
+    center: [56.462354, -2.969330],
     zoom: 12
   });
 
@@ -38,7 +37,7 @@
     accessToken: 'pk.eyJ1IjoibGhwYXJrZXIiLCJhIjoiY2pjdzk1NTM2MTZ0eTJxcGdqdXBkMnRvdiJ9._i6eCDguhU07Q_qmsH_pWQ'
 }).addTo(map);
 
-
+  L.geoJson(greenspace_boundary).addTo(map)
 
 
 var polygon = L.polygon([
