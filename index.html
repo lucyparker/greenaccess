@@ -40,9 +40,40 @@
   L.geoJson(greenspace_boundary).addTo(map)
 
 
-var polygon = L.polygon([
-    [ -2.730023464199331, 56.215190305614193 ], [ -2.729706592516628, 56.214925062470563 ], [ -2.729017589150877, 56.21519444265099 ], [ -2.729750925344214, 56.215323449339124 ], [ -2.729890055176348, 56.215305557418127 ], [ -2.730023464199331, 56.215190305614193 ]
-]).addTo(map);
+
+  // control that shows state info on hover
+	var info = L.control();
+
+	info.onAdd = function (map) {
+		this._div = L.DomUtil.create('div', 'info');
+		this.update();
+		return this._div;
+	};
+
+	info.update = function (props) {
+		this._div.innerHTML = '<h4>Greenspace Access</h4>' +  (props ?
+			'<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
+			: 'Hover over a boundary');
+	};
+
+	info.addTo(map);
+
+  // get color depending on feature type
+  //"Cemetery", "Religious Grounds", "Play Space", "Public Park Or Garden", "Playing Field"]
+  L.geoJSON(greenspace_boundary, {
+      style: function(features) {
+          switch (features.properties.function) {
+              case 'Playing Field': return {color: "#018571"};   //light green
+              case 'Cemetery':   return {color: "#ff0000"};   // red
+              case 'Play Space':   return {color: "#fdb863"}; // light orange
+              case 'Religious Grounds':   return {color: "#5e3c99"}; //light purple
+              case 'Public Park Or Garden':   return {color: "#4dac26"}; // dark green
+          }
+      }
+  }).addTo(map);
+
+
+
 
 </script>
 </body>
