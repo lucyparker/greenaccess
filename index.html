@@ -9,8 +9,9 @@
       integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
       crossorigin=""></script>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-  <title>Leaflet Web Map</title>
+  <title>!!!!!</title>
   <div id="map"></div>
 <style>
   #map{
@@ -24,7 +25,8 @@
 <body>
 <script>
   var map = L.map('map', {
-    center: [56.475, -2.94],
+    <!--center: [56.475, -2.94],-->
+    center: [ -2.730023464199331, 56.215190305614193 ],
     zoom: 12
   });
 
@@ -34,6 +36,13 @@
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoibGhwYXJrZXIiLCJhIjoiY2pjdzk1NTM2MTZ0eTJxcGdqdXBkMnRvdiJ9._i6eCDguhU07Q_qmsH_pWQ'
 }).addTo(map);
+
+
+
+
+var polygon = L.polygon([
+    [ -2.730023464199331, 56.215190305614193 ], [ -2.729706592516628, 56.214925062470563 ], [ -2.729017589150877, 56.21519444265099 ], [ -2.729750925344214, 56.215323449339124 ], [ -2.729890055176348, 56.215305557418127 ], [ -2.730023464199331, 56.215190305614193 ]
+]).addTo(map);
 
 </script>
 </body>
