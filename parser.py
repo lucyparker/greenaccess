@@ -21,13 +21,13 @@ def checkCoord(coord):
     return checkLong(coord[0]) and checkLat(coord[1])
 
 def checkLat(lat):
-    return lat > 56.3 and lat < 56.5
+    return lat > 56.449 and lat < 56.5112
 
 def checkLong(long):
     return long > -3.1 and long < -2.8
 
 def checkFunction(function):
-        return function in ["Cemetery", "Religious Grounds", "Play Space", "Public Park", "Public Garden", "Playing Field"]
+        return function in ["Cemetery", "Religious Grounds", "Play Space", "Public Park Or Garden", "Playing Field"]
 
 
 #def processCoordinates():
@@ -45,6 +45,7 @@ for feature in allFeatures:
         validFeatures.append(feature)
 
 l["features"] = validFeatures
+del l['crs']
 output = json.dumps(l)
 
 filteredspaces = open('processed_greenspaces.geojson', 'w')
