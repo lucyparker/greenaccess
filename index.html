@@ -39,25 +39,6 @@
 
   L.geoJson(greenspace_boundary).addTo(map)
 
-
-
-  // control that shows state info on hover
-	var info = L.control();
-
-	info.onAdd = function (map) {
-		this._div = L.DomUtil.create('div', 'info');
-		this.update();
-		return this._div;
-	};
-
-	info.update = function (props) {
-		this._div.innerHTML = '<h4>Greenspace Access</h4>' +  (props ?
-			'<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
-			: 'Hover over a boundary');
-	};
-
-	info.addTo(map);
-
   // get color depending on feature type
   //"Cemetery", "Religious Grounds", "Play Space", "Public Park Or Garden", "Playing Field"]
   L.geoJSON(greenspace_boundary, {
@@ -72,6 +53,36 @@
       }
   }).addTo(map);
 
+
+
+
+
+  //  IN PROGRESS
+
+
+
+  // control that shows area info on hover
+  var info = L.control();
+
+  info.onAdd = function (map) {
+      this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+      this.update();
+      return this._div;
+  };
+
+  // method that we will use to update the control based on feature properties passed
+  info.update = function (props) {
+      this._div.innerHTML = '<h4>US Population Density</h4>' +  (props ?
+          '<b>' + props.distinctiveName1 + '</b><br />' + features.properties.function + ' people / mi<sup>2</sup>'
+          : 'Hover over a space');
+  };
+
+  info.addTo(map);
+
+
+
+// Creating name labels
+//features.properties.distinctiveName1
 
 
 
